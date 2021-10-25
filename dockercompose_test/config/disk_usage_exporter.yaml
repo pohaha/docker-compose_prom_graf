@@ -1,0 +1,8 @@
+analyzed-path: /to_analyze
+bind-address: 0.0.0.0:9995
+dir-level: 5
+ignore-dirs:
+- /proc
+- /dev
+- /sys
+- /run
