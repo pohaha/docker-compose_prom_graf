@@ -1,5 +1,5 @@
 # TYPE some_metric counter
-some_metric 140
+some_metric 1000
     # TYPE another_metric gauge
     # HELP another_metric Just an example.
-another_metric 2100
+another_metric 200

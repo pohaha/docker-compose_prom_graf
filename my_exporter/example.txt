@@ -1,0 +1,174 @@
+     1	cpu_count = 6
+     2	cpu_load = 29.166666666666668
+     3	inet_lo_tx_bytes = 20564210
+     4	inet_lo_tx_packets = 94330
+     5	inet_lo_tx_errs = 0
+     6	inet_lo_tx_drops = 0
+     7	inet_lo_rx_bytes = 20564210
+     8	inet_lo_rx_packets = 94330
+     9	inet_lo_rx_errs = 0
+    10	inet_lo_rx_drops = 0
+    11	inet_eno1_tx_bytes = 1910309759
+    12	inet_eno1_tx_packets = 6255474
+    13	inet_eno1_tx_errs = 0
+    14	inet_eno1_tx_drops = 130434
+    15	inet_eno1_rx_bytes = 47742113
+    16	inet_eno1_rx_packets = 279859
+    17	inet_eno1_rx_errs = 0
+    18	inet_eno1_rx_drops = 0
+    19	inet_wlp4s0_tx_bytes = 416471376
+    20	inet_wlp4s0_tx_packets = 344669
+    21	inet_wlp4s0_tx_errs = 0
+    22	inet_wlp4s0_tx_drops = 0
+    23	inet_wlp4s0_rx_bytes = 31042461
+    24	inet_wlp4s0_rx_packets = 185837
+    25	inet_wlp4s0_rx_errs = 0
+    26	inet_wlp4s0_rx_drops = 0
+    27	inet_docker0_tx_bytes = 0
+    28	inet_docker0_tx_packets = 0
+    29	inet_docker0_tx_errs = 0
+    30	inet_docker0_tx_drops = 0
+    31	inet_docker0_rx_bytes = 0
+    32	inet_docker0_rx_packets = 0
+    33	inet_docker0_rx_errs = 0
+    34	inet_docker0_rx_drops = 0
+    35	inet_br:1cbb20ab016d_tx_bytes = 10844870
+    36	inet_br:1cbb20ab016d_tx_packets = 47078
+    37	inet_br:1cbb20ab016d_tx_errs = 0
+    38	inet_br:1cbb20ab016d_tx_drops = 0
+    39	inet_br:1cbb20ab016d_rx_bytes = 32328217
+    40	inet_br:1cbb20ab016d_rx_packets = 38162
+    41	inet_br:1cbb20ab016d_rx_errs = 0
+    42	inet_br:1cbb20ab016d_rx_drops = 0
+    43	mem_total_ram_megabytes = 9508
+    44	# TYPE count counter
+    45	# HELP count total amount of physical and logical cpu's
+    46	count{metric_part="cpu",name="count"} 6
+    47	# TYPE load counter
+    48	# HELP load average load of cpu's in %
+    49	load{metric_part="cpu",name="load"} 29.166666666666668
+    50	# TYPE inet_lo_tx_bytes counter
+    51	# HELP inet_lo_tx_bytes number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+    52	inet_lo_tx_bytes{metric_part="inet",iface_name="lo",tx_or_rx="tx",type_of_tx_rx_entites="bytes",name="inet_lo_tx_bytes"} 20564210
+    53	# TYPE inet_lo_tx_packets counter
+    54	# HELP inet_lo_tx_packets number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+    55	inet_lo_tx_packets{metric_part="inet",iface_name="lo",tx_or_rx="tx",type_of_tx_rx_entites="packets",name="inet_lo_tx_packets"} 94330
+    56	# TYPE inet_lo_tx_errs counter
+    57	# HELP inet_lo_tx_errs number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+    58	inet_lo_tx_errs{metric_part="inet",iface_name="lo",tx_or_rx="tx",type_of_tx_rx_entites="errs",name="inet_lo_tx_errs"} 0
+    59	# TYPE inet_lo_tx_drops counter
+    60	# HELP inet_lo_tx_drops number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+    61	inet_lo_tx_drops{metric_part="inet",iface_name="lo",tx_or_rx="tx",type_of_tx_rx_entites="drops",name="inet_lo_tx_drops"} 0
+    62	# TYPE inet_lo_rx_bytes counter
+    63	# HELP inet_lo_rx_bytes number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+    64	inet_lo_rx_bytes{metric_part="inet",iface_name="lo",tx_or_rx="rx",type_of_tx_rx_entites="bytes",name="inet_lo_rx_bytes"} 20564210
+    65	# TYPE inet_lo_rx_packets counter
+    66	# HELP inet_lo_rx_packets number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+    67	inet_lo_rx_packets{metric_part="inet",iface_name="lo",tx_or_rx="rx",type_of_tx_rx_entites="packets",name="inet_lo_rx_packets"} 94330
+    68	# TYPE inet_lo_rx_errs counter
+    69	# HELP inet_lo_rx_errs number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+    70	inet_lo_rx_errs{metric_part="inet",iface_name="lo",tx_or_rx="rx",type_of_tx_rx_entites="errs",name="inet_lo_rx_errs"} 0
+    71	# TYPE inet_lo_rx_drops counter
+    72	# HELP inet_lo_rx_drops number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+    73	inet_lo_rx_drops{metric_part="inet",iface_name="lo",tx_or_rx="rx",type_of_tx_rx_entites="drops",name="inet_lo_rx_drops"} 0
+    74	# TYPE inet_eno1_tx_bytes counter
+    75	# HELP inet_eno1_tx_bytes number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+    76	inet_eno1_tx_bytes{metric_part="inet",iface_name="eno1",tx_or_rx="tx",type_of_tx_rx_entites="bytes",name="inet_eno1_tx_bytes"} 1910309759
+    77	# TYPE inet_eno1_tx_packets counter
+    78	# HELP inet_eno1_tx_packets number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+    79	inet_eno1_tx_packets{metric_part="inet",iface_name="eno1",tx_or_rx="tx",type_of_tx_rx_entites="packets",name="inet_eno1_tx_packets"} 6255474
+    80	# TYPE inet_eno1_tx_errs counter
+    81	# HELP inet_eno1_tx_errs number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+    82	inet_eno1_tx_errs{metric_part="inet",iface_name="eno1",tx_or_rx="tx",type_of_tx_rx_entites="errs",name="inet_eno1_tx_errs"} 0
+    83	# TYPE inet_eno1_tx_drops counter
+    84	# HELP inet_eno1_tx_drops number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+    85	inet_eno1_tx_drops{metric_part="inet",iface_name="eno1",tx_or_rx="tx",type_of_tx_rx_entites="drops",name="inet_eno1_tx_drops"} 130434
+    86	# TYPE inet_eno1_rx_bytes counter
+    87	# HELP inet_eno1_rx_bytes number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+    88	inet_eno1_rx_bytes{metric_part="inet",iface_name="eno1",tx_or_rx="rx",type_of_tx_rx_entites="bytes",name="inet_eno1_rx_bytes"} 47742113
+    89	# TYPE inet_eno1_rx_packets counter
+    90	# HELP inet_eno1_rx_packets number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+    91	inet_eno1_rx_packets{metric_part="inet",iface_name="eno1",tx_or_rx="rx",type_of_tx_rx_entites="packets",name="inet_eno1_rx_packets"} 279859
+    92	# TYPE inet_eno1_rx_errs counter
+    93	# HELP inet_eno1_rx_errs number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+    94	inet_eno1_rx_errs{metric_part="inet",iface_name="eno1",tx_or_rx="rx",type_of_tx_rx_entites="errs",name="inet_eno1_rx_errs"} 0
+    95	# TYPE inet_eno1_rx_drops counter
+    96	# HELP inet_eno1_rx_drops number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+    97	inet_eno1_rx_drops{metric_part="inet",iface_name="eno1",tx_or_rx="rx",type_of_tx_rx_entites="drops",name="inet_eno1_rx_drops"} 0
+    98	# TYPE inet_wlp4s0_tx_bytes counter
+    99	# HELP inet_wlp4s0_tx_bytes number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+   100	inet_wlp4s0_tx_bytes{metric_part="inet",iface_name="wlp4s0",tx_or_rx="tx",type_of_tx_rx_entites="bytes",name="inet_wlp4s0_tx_bytes"} 416471376
+   101	# TYPE inet_wlp4s0_tx_packets counter
+   102	# HELP inet_wlp4s0_tx_packets number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+   103	inet_wlp4s0_tx_packets{metric_part="inet",iface_name="wlp4s0",tx_or_rx="tx",type_of_tx_rx_entites="packets",name="inet_wlp4s0_tx_packets"} 344669
+   104	# TYPE inet_wlp4s0_tx_errs counter
+   105	# HELP inet_wlp4s0_tx_errs number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+   106	inet_wlp4s0_tx_errs{metric_part="inet",iface_name="wlp4s0",tx_or_rx="tx",type_of_tx_rx_entites="errs",name="inet_wlp4s0_tx_errs"} 0
+   107	# TYPE inet_wlp4s0_tx_drops counter
+   108	# HELP inet_wlp4s0_tx_drops number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+   109	inet_wlp4s0_tx_drops{metric_part="inet",iface_name="wlp4s0",tx_or_rx="tx",type_of_tx_rx_entites="drops",name="inet_wlp4s0_tx_drops"} 0
+   110	# TYPE inet_wlp4s0_rx_bytes counter
+   111	# HELP inet_wlp4s0_rx_bytes number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+   112	inet_wlp4s0_rx_bytes{metric_part="inet",iface_name="wlp4s0",tx_or_rx="rx",type_of_tx_rx_entites="bytes",name="inet_wlp4s0_rx_bytes"} 31042461
+   113	# TYPE inet_wlp4s0_rx_packets counter
+   114	# HELP inet_wlp4s0_rx_packets number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+   115	inet_wlp4s0_rx_packets{metric_part="inet",iface_name="wlp4s0",tx_or_rx="rx",type_of_tx_rx_entites="packets",name="inet_wlp4s0_rx_packets"} 185837
+   116	# TYPE inet_wlp4s0_rx_errs counter
+   117	# HELP inet_wlp4s0_rx_errs number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+   118	inet_wlp4s0_rx_errs{metric_part="inet",iface_name="wlp4s0",tx_or_rx="rx",type_of_tx_rx_entites="errs",name="inet_wlp4s0_rx_errs"} 0
+   119	# TYPE inet_wlp4s0_rx_drops counter
+   120	# HELP inet_wlp4s0_rx_drops number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+   121	inet_wlp4s0_rx_drops{metric_part="inet",iface_name="wlp4s0",tx_or_rx="rx",type_of_tx_rx_entites="drops",name="inet_wlp4s0_rx_drops"} 0
+   122	# TYPE inet_docker0_tx_bytes counter
+   123	# HELP inet_docker0_tx_bytes number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+   124	inet_docker0_tx_bytes{metric_part="inet",iface_name="docker0",tx_or_rx="tx",type_of_tx_rx_entites="bytes",name="inet_docker0_tx_bytes"} 0
+   125	# TYPE inet_docker0_tx_packets counter
+   126	# HELP inet_docker0_tx_packets number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+   127	inet_docker0_tx_packets{metric_part="inet",iface_name="docker0",tx_or_rx="tx",type_of_tx_rx_entites="packets",name="inet_docker0_tx_packets"} 0
+   128	# TYPE inet_docker0_tx_errs counter
+   129	# HELP inet_docker0_tx_errs number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+   130	inet_docker0_tx_errs{metric_part="inet",iface_name="docker0",tx_or_rx="tx",type_of_tx_rx_entites="errs",name="inet_docker0_tx_errs"} 0
+   131	# TYPE inet_docker0_tx_drops counter
+   132	# HELP inet_docker0_tx_drops number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+   133	inet_docker0_tx_drops{metric_part="inet",iface_name="docker0",tx_or_rx="tx",type_of_tx_rx_entites="drops",name="inet_docker0_tx_drops"} 0
+   134	# TYPE inet_docker0_rx_bytes counter
+   135	# HELP inet_docker0_rx_bytes number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+   136	inet_docker0_rx_bytes{metric_part="inet",iface_name="docker0",tx_or_rx="rx",type_of_tx_rx_entites="bytes",name="inet_docker0_rx_bytes"} 0
+   137	# TYPE inet_docker0_rx_packets counter
+   138	# HELP inet_docker0_rx_packets number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+   139	inet_docker0_rx_packets{metric_part="inet",iface_name="docker0",tx_or_rx="rx",type_of_tx_rx_entites="packets",name="inet_docker0_rx_packets"} 0
+   140	# TYPE inet_docker0_rx_errs counter
+   141	# HELP inet_docker0_rx_errs number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+   142	inet_docker0_rx_errs{metric_part="inet",iface_name="docker0",tx_or_rx="rx",type_of_tx_rx_entites="errs",name="inet_docker0_rx_errs"} 0
+   143	# TYPE inet_docker0_rx_drops counter
+   144	# HELP inet_docker0_rx_drops number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+   145	inet_docker0_rx_drops{metric_part="inet",iface_name="docker0",tx_or_rx="rx",type_of_tx_rx_entites="drops",name="inet_docker0_rx_drops"} 0
+   146	# TYPE inet_br:1cbb20ab016d_tx_bytes counter
+   147	# HELP inet_br:1cbb20ab016d_tx_bytes number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+   148	inet_br:1cbb20ab016d_tx_bytes{metric_part="inet",iface_name="br:1cbb20ab016d",tx_or_rx="tx",type_of_tx_rx_entites="bytes",name="inet_br:1cbb20ab016d_tx_bytes"} 10844870
+   149	# TYPE inet_br:1cbb20ab016d_tx_packets counter
+   150	# HELP inet_br:1cbb20ab016d_tx_packets number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+   151	inet_br:1cbb20ab016d_tx_packets{metric_part="inet",iface_name="br:1cbb20ab016d",tx_or_rx="tx",type_of_tx_rx_entites="packets",name="inet_br:1cbb20ab016d_tx_packets"} 47078
+   152	# TYPE inet_br:1cbb20ab016d_tx_errs counter
+   153	# HELP inet_br:1cbb20ab016d_tx_errs number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+   154	inet_br:1cbb20ab016d_tx_errs{metric_part="inet",iface_name="br:1cbb20ab016d",tx_or_rx="tx",type_of_tx_rx_entites="errs",name="inet_br:1cbb20ab016d_tx_errs"} 0
+   155	# TYPE inet_br:1cbb20ab016d_tx_drops counter
+   156	# HELP inet_br:1cbb20ab016d_tx_drops number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+   157	inet_br:1cbb20ab016d_tx_drops{metric_part="inet",iface_name="br:1cbb20ab016d",tx_or_rx="tx",type_of_tx_rx_entites="drops",name="inet_br:1cbb20ab016d_tx_drops"} 0
+   158	# TYPE inet_br:1cbb20ab016d_rx_bytes counter
+   159	# HELP inet_br:1cbb20ab016d_rx_bytes number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+   160	inet_br:1cbb20ab016d_rx_bytes{metric_part="inet",iface_name="br:1cbb20ab016d",tx_or_rx="rx",type_of_tx_rx_entites="bytes",name="inet_br:1cbb20ab016d_rx_bytes"} 32328217
+   161	# TYPE inet_br:1cbb20ab016d_rx_packets counter
+   162	# HELP inet_br:1cbb20ab016d_rx_packets number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+   163	inet_br:1cbb20ab016d_rx_packets{metric_part="inet",iface_name="br:1cbb20ab016d",tx_or_rx="rx",type_of_tx_rx_entites="packets",name="inet_br:1cbb20ab016d_rx_packets"} 38162
+   164	# TYPE inet_br:1cbb20ab016d_rx_errs counter
+   165	# HELP inet_br:1cbb20ab016d_rx_errs number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+   166	inet_br:1cbb20ab016d_rx_errs{metric_part="inet",iface_name="br:1cbb20ab016d",tx_or_rx="rx",type_of_tx_rx_entites="errs",name="inet_br:1cbb20ab016d_rx_errs"} 0
+   167	# TYPE inet_br:1cbb20ab016d_rx_drops counter
+   168	# HELP inet_br:1cbb20ab016d_rx_drops number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)
+   169	inet_br:1cbb20ab016d_rx_drops{metric_part="inet",iface_name="br:1cbb20ab016d",tx_or_rx="rx",type_of_tx_rx_entites="drops",name="inet_br:1cbb20ab016d_rx_drops"} 0
+   170	# TYPE megabytes counter
+   171	# HELP megabytes total ram of a pc
+   172	megabytes{metric_part="mem",mem_info="total",memory_specifier="ram",name="megabytes"} 9508
+       
+   173	<Response [200]>
