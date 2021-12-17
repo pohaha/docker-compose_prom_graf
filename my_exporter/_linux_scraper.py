@@ -1,71 +1,93 @@
 import os
 import Metric as library
+from enum import IntEnum as Enum
 
-def get_cpu():
-
-    statistics = {}
-
-    # Get Physical and Logical CPU Count
-    physical_and_logical_cpu_count = os.cpu_count()
-    labels = {'metric_part':'cpu','name':'count'}
-    help_string = "total amount of physical and logical cpu's"
-    statistics['cpu_count'] = library.Metric(labels,physical_and_logical_cpu_count,None,library.Metric_Type.Counter,help_string)
-    
-    # count load average
-    labels = {'metric_part':'cpu','name':'load'}
-    help_string = "average load of cpu's in %"
-    cpu_load = [x / os.cpu_count() * 100 for x in os.getloadavg()][-1]
-    statistics['cpu_load'] = library.Metric(labels,cpu_load,None,library.Metric_Type.Counter,help_string)
-    return statistics
-
-def get_mem():
-    mem_info = []
-    mem_info = map(int, os.popen('free -t --mega').readlines()[-1].split()[1:])
-    statistics = {}
-    names = ["mem_total_ram_megabytes","mem_used_ram_megabytes","mem_free_ram_megabytes"]
-    label_names = ["metric_part","mem_info","memory_specifier","name"]
-    help_strings = ["total ram of a pc","currently used ram of a pc", "free (not avalible!!) ram memory of a pc"]
-    index = 0
-    for info in mem_info:
-        labels = dict(zip(label_names,library.name_to_label(names[index])))
-        statistics[names[index]] = library.Metric(labels,info,None,library.Metric_Type.Counter,help_strings[index])
-    return statistics
+inet_help_string = "number of [transmitted,recieved] (direction) [bytes, packets,errors,drops] (monitored_data_type) on a specific [web interface] (device_name)"
+class Inet_Metric(library.Base_Metric_With_Labels):
+    class Label_Names(library.Base_Label_Names, Enum):
+        monitored_data_type = 1
+        device_name = 2
+        direction = 3
+        def __str__(self):
+            if(self.value == Inet_Metric.Label_Names.monitored_data_type):
+                return "monitored_data_type"
+            elif(self.value == Inet_Metric.Label_Names.device_name):
+                return "device:name"
+            elif(self.value == Inet_Metric.Label_Names.direction):
+                return "direction"
+            else:
+                return "unknown label"
+    def __init__(self):
+        super().__init__("inet", library.Metric_Type.Counter, inet_help_string)
 
 #unavalible symbols in metric names are : -, \, /, [], +, *, $, !, @, #, %, (пробел), |, ^, &, (), =, ", ', {}, ;, <>, (запятая), (точка), ?, `, ~
-#avalible symbols are: 0-9, :, a-z, A-Z, _, 
-
 def get_inet():
+    inet = Inet_Metric()
     lines = open("/proc/net/dev", "r").readlines()
     i = 0
-    statistics = {}
     data = {}
-    label_names = ["metric_part","iface_name","tx_or_rx","type_of_tx_rx_entites"]
     types = ["bytes","packets","errs","drops"]
     tx_rx = ["tx", "rx"]
-    help_string = "number of transmitted/recieved (tx/rx) [bytes, packets,errors,drops](name) on a specific web interface (iface_name)"
     for line in lines:
         if(i < 2):
-            i=i+1
-            continue
-        elif(i < 7):
+            pass
+        else:
             name_and_data = line.split(':')
             iface_name = name_and_data[0].strip()
-            if(i == 6):
-                iface_name = "br:1cbb20ab016d"
+            l_iface_name = library.Label(Inet_Metric.Label_Names.device_name,iface_name)
             full_data = name_and_data[1]
             full_data = full_data.split()
             data["tx"] = full_data[0:7]
             data["rx"] = full_data[8:]
             for direction in tx_rx:
+                l_direction = library.Label(Inet_Metric.Label_Names.direction,direction)
                 index = 0
                 for typename in types:
-                    full_name = F"inet_{iface_name}_{direction}_{typename}"
-                    labels = dict(zip(label_names,library.name_to_label(full_name)))
-                    labels.update({'name':full_name})
-                    statistics[full_name] = library.Metric(labels,data[direction][index],None,library.Metric_Type.Counter,help_string)
+                    l_type = library.Label(Inet_Metric.Label_Names.monitored_data_type, typename)
+                    labels = [l_iface_name, l_direction, l_type]
+                    inet.add_or_update_pushables(labels, data[direction][index])
                     index=index+1
         i=i+1
-    return statistics
+    return inet
+    
+cpu_help_string = "information about CPU [cpu_count, cpu_load_avg](monitored_data_type)"
+class Cpu_Metric(library.Base_Metric_With_Labels):
+    class Label_Names(library.Base_Label_Names, Enum):
+        monitored_data_type = 1
+        def __str__(self):
+            if(self.value == Inet_Metric.Label_Names.monitored_data_type):
+                return "monitored_data_type"
+            else:
+                return "unknown label"
+    def __init__(self):
+        super().__init__("cpu", library.Metric_Type.Gauge, cpu_help_string)
+
+
+def get_cpu():
+    cpu = Cpu_Metric()
+    l_cpu_count = library.Label(Cpu_Metric.Label_Names.monitored_data_type, "cpu_count")
+    l_cpu_load_avg = library.Label(Cpu_Metric.Label_Names.monitored_data_type, "cpu_load_avg")
+    # Get Physical and Logical CPU Count
+    physical_and_logical_cpu_count = os.cpu_count()
+    cpu.add_or_update_pushables([l_cpu_count], physical_and_logical_cpu_count)    
+    # count load average
+    cpu_load_value = [x / os.cpu_count() * 100 for x in os.getloadavg()][-1]
+    cpu.add_or_update_pushables([l_cpu_load_avg], cpu_load_value)
+    return cpu
+
+def get_mem():
+    mem_info = []
+    mem_info = map(int, os.popen('free -t --mega').readlines()[-1].split()[1:])
+    ram = library.Metric("ram", library.Metric_Type.Gauge, "information about current RAM state")
+    subsets = ["total","used","free"]
+    index = 0
+    for info in mem_info:
+        labels = [library.Label(library.Label_Names.ram_subset, subsets[index])]
+        ram.add_or_update_pushables(labels, info)
+        index +=1
+    return ram
+
+
 
 
 

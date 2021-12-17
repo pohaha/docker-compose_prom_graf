@@ -1,5 +1,5 @@
-# TYPE some_metric counter
-some_metric 1000
-    # TYPE another_metric gauge
-    # HELP another_metric Just an example.
-another_metric 200
+# TYPE megabytes counter
+# HELP megabytes total ram of a pc
+megabytes{metric_part="mem",mem_info="total",memory_specifier="ram",name="megabytes"} 35672
+megabytes{metric_part="mem",mem_info="used",memory_specifier="ram",name="megabytes"} 3409
+megabytes{metric_part="mem",mem_info="free",memory_specifier="ram",name="megabytes"} 24683

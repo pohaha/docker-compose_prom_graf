@@ -6,6 +6,7 @@ from os import name
 import requests
 import sys
 import Metric as library
+import copy
 
 exports  = False
 
@@ -22,7 +23,6 @@ class system_metrics_exporter(library.prom_exporter):
     get_cpu = []
     get_inet = []
     get_mem = []
-    metrics = {}
 
     #show the scraped metrics on the screen
     def show(self):
@@ -38,9 +38,12 @@ class system_metrics_exporter(library.prom_exporter):
     
     #scrape all needed metrics
     def get_metrics(self):
-        self.metrics.update(self.get_cpu())
-        self.metrics.update(self.get_inet())
-        self.metrics.update(self.get_mem())
+        # cpu = self.get_cpu()
+        self.set_metric(copy.deepcopy(self.get_cpu()))
+        # self.set_metric(cpu[0])
+        self.set_metric(copy.deepcopy(self.get_inet()))
+        #self.set_metric(self.get_mem())
+
 
     #get os specific scrapers
     def __init__(self, name):
@@ -68,10 +71,8 @@ class system_metrics_exporter(library.prom_exporter):
     #scrape+show for now (exporter pending)
     def scrape(self):
         self.get_metrics()
-        for metric in self.metrics.values():
-            self.set_metric(metric)
-        self.show()
-        print(self.convert_metrics())
+        self.scrape_metrics()
+        print(self.convert_pushables())
         self.push_to_gateway()
     
     def get_metric(self, index):
@@ -80,11 +81,10 @@ class system_metrics_exporter(library.prom_exporter):
 
 #example!!!
 #sys.platform = "windows"
-some_exporter = system_metrics_exporter("simple exporter")
-while(True):
-    some_exporter.scrape()
-    time.sleep(15)
-    print("metrics are exported")
+some_exporter = system_metrics_exporter("simple_exporter")
+# while(True):
+some_exporter.scrape()
+#time.sleep(10)
 
 
 
